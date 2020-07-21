@@ -41,6 +41,7 @@
             this.pbStick = new System.Windows.Forms.PictureBox();
             this.pbAIWin = new System.Windows.Forms.PictureBox();
             this.pbAILose = new System.Windows.Forms.PictureBox();
+            this.btChangeSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbStick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAIWin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAILose)).BeginInit();
@@ -75,7 +76,6 @@
             this.lblRemainSticks.Size = new System.Drawing.Size(252, 31);
             this.lblRemainSticks.TabIndex = 2;
             this.lblRemainSticks.Text = "Осталось палочек:";
-           
             // 
             // lblEntireAmount
             // 
@@ -87,7 +87,6 @@
             this.lblEntireAmount.Size = new System.Drawing.Size(24, 25);
             this.lblEntireAmount.TabIndex = 3;
             this.lblEntireAmount.Text = "_";
-           
             // 
             // lblAIPoints
             // 
@@ -99,7 +98,6 @@
             this.lblAIPoints.Size = new System.Drawing.Size(24, 25);
             this.lblAIPoints.TabIndex = 5;
             this.lblAIPoints.Text = "_";
-           
             // 
             // lblInfoAIPoints
             // 
@@ -111,7 +109,6 @@
             this.lblInfoAIPoints.Size = new System.Drawing.Size(198, 31);
             this.lblInfoAIPoints.TabIndex = 4;
             this.lblInfoAIPoints.Text = "Палочек у ИИ:";
-          
             // 
             // lblPlayerPoints
             // 
@@ -123,7 +120,6 @@
             this.lblPlayerPoints.Size = new System.Drawing.Size(24, 25);
             this.lblPlayerPoints.TabIndex = 7;
             this.lblPlayerPoints.Text = "_";
-           
             // 
             // lblInfoPlayerPoints
             // 
@@ -135,7 +131,6 @@
             this.lblInfoPlayerPoints.Size = new System.Drawing.Size(242, 31);
             this.lblInfoPlayerPoints.TabIndex = 6;
             this.lblInfoPlayerPoints.Text = "Палочек у игрока:";
-            
             // 
             // lblWinner
             // 
@@ -181,12 +176,24 @@
             this.pbAILose.TabStop = false;
             this.pbAILose.Visible = false;
             // 
+            // btChangeSettings
+            // 
+            this.btChangeSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btChangeSettings.Location = new System.Drawing.Point(324, 331);
+            this.btChangeSettings.Name = "btChangeSettings";
+            this.btChangeSettings.Size = new System.Drawing.Size(128, 28);
+            this.btChangeSettings.TabIndex = 12;
+            this.btChangeSettings.Text = "Change Settings";
+            this.btChangeSettings.UseVisualStyleBackColor = false;
+            this.btChangeSettings.Click += new System.EventHandler(this.btChangeSettings_Click);
+            // 
             // gameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(492, 412);
+            this.Controls.Add(this.btChangeSettings);
             this.Controls.Add(this.pbAILose);
             this.Controls.Add(this.pbAIWin);
             this.Controls.Add(this.pbStick);
@@ -204,7 +211,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kitaiskiy Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gameForm_FormClosing);
-            
+            this.Load += new System.EventHandler(this.gameForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbStick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAIWin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAILose)).EndInit();
@@ -227,6 +234,7 @@
         private System.Windows.Forms.PictureBox pbStick;
         private System.Windows.Forms.PictureBox pbAIWin;
         private System.Windows.Forms.PictureBox pbAILose;
+        private System.Windows.Forms.Button btChangeSettings;
     }
 }
 

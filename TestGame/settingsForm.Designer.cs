@@ -39,6 +39,7 @@
             this.rbCustom = new System.Windows.Forms.RadioButton();
             this.pbAI = new System.Windows.Forms.PictureBox();
             this.bt_start = new System.Windows.Forms.Button();
+            this.cbFirstTurnAI = new System.Windows.Forms.CheckBox();
             this.gbSettings.SuspendLayout();
             this.gbGameMode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAI)).BeginInit();
@@ -47,6 +48,7 @@
             // gbSettings
             // 
             this.gbSettings.BackColor = System.Drawing.Color.Transparent;
+            this.gbSettings.Controls.Add(this.cbFirstTurnAI);
             this.gbSettings.Controls.Add(this.tbMaxPerTurn);
             this.gbSettings.Controls.Add(this.tbAmount);
             this.gbSettings.Controls.Add(this.lblMaxPerTurn);
@@ -56,7 +58,7 @@
             this.gbSettings.ForeColor = System.Drawing.Color.White;
             this.gbSettings.Location = new System.Drawing.Point(12, 40);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(295, 288);
+            this.gbSettings.Size = new System.Drawing.Size(295, 328);
             this.gbSettings.TabIndex = 0;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
@@ -67,7 +69,7 @@
             this.tbMaxPerTurn.Name = "tbMaxPerTurn";
             this.tbMaxPerTurn.Size = new System.Drawing.Size(70, 31);
             this.tbMaxPerTurn.TabIndex = 6;
-            this.tbMaxPerTurn.Text = "1";
+            this.tbMaxPerTurn.Text = "4";
             // 
             // tbAmount
             // 
@@ -75,7 +77,7 @@
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(70, 31);
             this.tbAmount.TabIndex = 5;
-            this.tbAmount.Text = "1";
+            this.tbAmount.Text = "21";
             // 
             // lblMaxPerTurn
             // 
@@ -135,7 +137,7 @@
             this.pbAI.BackColor = System.Drawing.Color.Transparent;
             this.pbAI.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbAI.BackgroundImage")));
             this.pbAI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbAI.Location = new System.Drawing.Point(431, 53);
+            this.pbAI.Location = new System.Drawing.Point(372, 26);
             this.pbAI.Name = "pbAI";
             this.pbAI.Size = new System.Drawing.Size(357, 456);
             this.pbAI.TabIndex = 1;
@@ -155,13 +157,24 @@
             this.bt_start.UseVisualStyleBackColor = false;
             this.bt_start.Click += new System.EventHandler(this.bt_start_Click);
             // 
+            // cbFirstTurnAI
+            // 
+            this.cbFirstTurnAI.AutoSize = true;
+            this.cbFirstTurnAI.ForeColor = System.Drawing.Color.White;
+            this.cbFirstTurnAI.Location = new System.Drawing.Point(58, 281);
+            this.cbFirstTurnAI.Name = "cbFirstTurnAI";
+            this.cbFirstTurnAI.Size = new System.Drawing.Size(141, 29);
+            this.cbFirstTurnAI.TabIndex = 7;
+            this.cbFirstTurnAI.Text = "First turn AI";
+            this.cbFirstTurnAI.UseVisualStyleBackColor = true;
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(810, 537);
+            this.ClientSize = new System.Drawing.Size(743, 483);
             this.Controls.Add(this.bt_start);
             this.Controls.Add(this.pbAI);
             this.Controls.Add(this.gbSettings);
@@ -191,5 +204,6 @@
         private System.Windows.Forms.RadioButton rbCustom;
         private System.Windows.Forms.PictureBox pbAI;
         private System.Windows.Forms.Button bt_start;
+        private System.Windows.Forms.CheckBox cbFirstTurnAI;
     }
 }

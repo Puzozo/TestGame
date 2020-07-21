@@ -54,8 +54,15 @@ namespace TestGame
 
             if (customMode)
             {
-               form = new gameForm(this, amount, max_per_turn);
+                if (cbFirstTurnAI.Checked)
+                {
+                    form = new gameForm(this, amount, max_per_turn, PlayerTypes.AI, PlayerTypes.Player);
+                }
 
+                else
+                {
+                    form = new gameForm(this, amount, max_per_turn);
+                }
             }
             else
             {
@@ -81,6 +88,7 @@ namespace TestGame
                 lblAmount.Visible = false;
                 lblMaxPerTurn.Visible = false;
                 customMode = false;
+                cbFirstTurnAI.Visible = false;
             }
             else if (rbCustom.Checked)
             {
@@ -89,6 +97,7 @@ namespace TestGame
                 lblAmount.Visible = true;
                 lblMaxPerTurn.Visible = true;
                 customMode = true;
+                cbFirstTurnAI.Visible = true;
             }
         }
     }

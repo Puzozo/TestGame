@@ -29,19 +29,106 @@ namespace TestGame
             //{
             //    return maxPerTurn;
             //}
-            if (AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
+            
+            if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
             {
-                if (currentSticks - maxPerTurn - 3 <= maxPerTurn && currentSticks - maxPerTurn - 3 > 0 )
+                int turn = 1;
+                while (currentSticks > turn && turn < maxPerTurn - 1)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+
+                }
+               
+
+            }
+            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
+            {
+                int turn = 2;
+                while (currentSticks > turn && turn < maxPerTurn)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+
+                }
+            }
+            else if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
+            {
+                int turn = 1;
+                while (currentSticks > turn && turn < maxPerTurn)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+
+                }
+            }
+            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
+            {
+                int turn = 2;
+                while (currentSticks > turn && turn < maxPerTurn - 1)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+
+                }
+            }
+
+
+
+
+            else if(AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
+            {
+                if (currentSticks - maxPerTurn - 3 <= maxPerTurn && currentSticks - maxPerTurn - 3 > 0)
                 {
                     AISticks += currentSticks - maxPerTurn - 3;
                     return currentSticks - maxPerTurn - 3;
-                    
+
                 }
-                else if(currentSticks>maxPerTurn)
+                else if (currentSticks > maxPerTurn)
                 {
                     AISticks += maxPerTurn;
                     return maxPerTurn;
-                    
+
                 }
                 else
                 {
@@ -71,11 +158,15 @@ namespace TestGame
                 }
 
             }
+
+
+            
+
             else
             {
                 AISticks++;
                 return 1;
-                
+
             }
             //if (AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
             //{

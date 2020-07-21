@@ -18,7 +18,8 @@ namespace TestGame
         private GameEngine game;
         private Validation validator;
         private AI ai;
-        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn=3)
+        private PlayerTypes firstPlayer, secondPlayer;
+        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn=3, PlayerTypes firstPlayer = PlayerTypes.Player, PlayerTypes secondPlayer = PlayerTypes.AI)
         {
             InitializeComponent();
             this.maxPerTurn = maxPerTurn;
@@ -29,6 +30,8 @@ namespace TestGame
             lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
             validator = new Validation();
             ai = new AI(maxPerTurn);
+            this.firstPlayer = firstPlayer;
+            this.secondPlayer = secondPlayer;
         }
 
         private void gameForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -65,6 +68,7 @@ namespace TestGame
                 MessageBox.Show("You can't choose this number, you can't choose nubers bigger then number of remaining sticks ( " + game.AllSticks.ToString() + " )");
                 return;
             }
+
             game.Turn(PlayerTypes.Player, numberOfSticks);
            
             if (game.Winner() == PlayerTypes.Undefined)
@@ -90,7 +94,23 @@ namespace TestGame
             lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
         }
 
-       
+        private void gameForm_Load(object sender, EventArgs e)
+        {
+            if (firstPlayer == PlayerTypes.AI)
+            {
+                game.Turn(PlayerTypes.AI, ai.AITurn(game.AllSticks));
+                lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
+                lblAIPoints.Text = Convert.ToString(game.AISticks);
+                lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
+            }
+        }
+
+        private void btChangeSettings_Click(object sender, EventArgs e)
+        {
+            form.Show();
+            this.Hide();
+            this.Dispose();
+        }
     }
 }
 
