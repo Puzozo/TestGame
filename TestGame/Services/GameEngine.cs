@@ -28,14 +28,17 @@ namespace TestGame
             get { return aiSticks; }
             private set { aiSticks = value; }
         }
-        
-        public GameEngine(int allSticks)
+
+        private AI ai;
+
+        public GameEngine(int allSticks, int maxPerTurn)
         {
             this.AllSticks = allSticks;
             PlayerSticks = 0;
             AISticks = 0;
+            ai = new AI(maxPerTurn);
         }
-        public void Turn(PlayerTypes playerType, int numberOfSticks)
+        public void Turn(PlayerTypes playerType, int numberOfSticks = 0)
         {
             if (playerType == PlayerTypes.Player)
             {
@@ -44,8 +47,9 @@ namespace TestGame
             }
             else
             {
-                AllSticks -= numberOfSticks;
-                AISticks += numberOfSticks;
+                int aiTurn = ai.AITurn(AllSticks);
+                AISticks += aiTurn;
+                AllSticks -= aiTurn;  
             }
         }
         public PlayerTypes Winner()

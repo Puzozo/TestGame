@@ -17,26 +17,21 @@ namespace TestGame
         private int maxPerTurn;
         private GameEngine game;
         private Validation validator;
-        private AI ai;
         private PlayerTypes firstPlayer, secondPlayer;
-        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn = 3, PlayerTypes firstPlayer = PlayerTypes.Player, PlayerTypes secondPlayer = PlayerTypes.AI)
+        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn = 3, 
+                        PlayerTypes firstPlayer = PlayerTypes.Player, PlayerTypes secondPlayer = PlayerTypes.AI)
         {
             InitializeComponent();
             this.maxPerTurn = maxPerTurn;
             form = mainForm;
-            game = new GameEngine(amount);
-            lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
-            lblAIPoints.Text = Convert.ToString(game.AISticks);
-            lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
+            game = new GameEngine(amount, maxPerTurn);
             validator = new Validation();
-            ai = new AI(maxPerTurn);
             this.firstPlayer = firstPlayer;
             this.secondPlayer = secondPlayer;
         }
 
         private void gameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             form.Show();
             this.Hide();
             this.Dispose();
@@ -49,14 +44,12 @@ namespace TestGame
             {
                 return;
             }
-
-
             int numberOfSticks = Convert.ToInt32(tbChosenNumberOfSticksByPlayer.Text);
             game.Turn(PlayerTypes.Player, numberOfSticks);
 
             if (game.Winner() == PlayerTypes.Undefined)
             {
-                game.Turn(PlayerTypes.AI, ai.AITurn(game.AllSticks));
+                game.Turn(PlayerTypes.AI);
             }
 
             if (game.Winner() == PlayerTypes.AI)
@@ -72,8 +65,6 @@ namespace TestGame
                 pbAILose.Visible = true;
             }
 
-
-
             lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
             lblAIPoints.Text = Convert.ToString(game.AISticks);
             lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
@@ -83,11 +74,11 @@ namespace TestGame
         {
             if (firstPlayer == PlayerTypes.AI)
             {
-                game.Turn(PlayerTypes.AI, ai.AITurn(game.AllSticks));
-                lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
-                lblAIPoints.Text = Convert.ToString(game.AISticks);
-                lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
+                game.Turn(PlayerTypes.AI);
             }
+            lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
+            lblAIPoints.Text = Convert.ToString(game.AISticks);
+            lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
         }
 
         private void btChangeSettings_Click(object sender, EventArgs e)
@@ -104,19 +95,19 @@ namespace TestGame
                 MessageBox.Show("Plz enter only numbers");
                 return false;
             }
-            if (!validator.BiggerThen(0, Convert.ToInt32(input)))
+            if (!validator.IsBiggerThen(0, Convert.ToInt32(input)))
             {
                 MessageBox.Show("Plz enter only integers");
                 return false;
             }
             int numberOfSticks = Convert.ToInt32(input);
 
-            if (!validator.LessThen(maxPerTurn, numberOfSticks))
+            if (!validator.IsLessThen(maxPerTurn, numberOfSticks))
             {
                 MessageBox.Show("You can't choose this number, you can't choose nubers bigger then permited max nuber sticks by every turn ( " + maxPerTurn.ToString() + " )");
                 return false;
             }
-            if (!validator.LessThen(game.AllSticks, numberOfSticks))
+            if (!validator.IsLessThen(game.AllSticks, numberOfSticks))
             {
                 MessageBox.Show("You can't choose this number, you can't choose nubers bigger then number of remaining sticks ( " + game.AllSticks.ToString() + " )");
                 return false;

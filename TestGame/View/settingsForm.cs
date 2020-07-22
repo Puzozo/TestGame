@@ -33,12 +33,12 @@ namespace TestGame
                 MessageBox.Show("Plz enter only numbers");
                 return;
             }
-            if (!validator.BiggerThen(0, Convert.ToInt32(tbAmount.Text)))
+            if (!validator.IsBiggerThen(0, Convert.ToInt32(tbAmount.Text)))
             {
                 MessageBox.Show("Plz enter only integers");
                 return;
             }
-            if (!validator.BiggerThen(0, Convert.ToInt32(tbMaxPerTurn.Text)))
+            if (!validator.IsBiggerThen(0, Convert.ToInt32(tbMaxPerTurn.Text)))
             {
                 MessageBox.Show("Plz enter only integers");
                 return;

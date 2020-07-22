@@ -9,132 +9,37 @@ namespace TestGame
     public class AI
     {
         private int  maxPerTurn, AISticks;
-       // private bool isAISticksEven;
+       
         public AI(int maxPerTurn)
         {
             this.maxPerTurn = maxPerTurn;
         }
-        public int AITurn(int currentSticks)
+
+        //first limit is (maxPerTurn * 2) + 3
+        private int MoreThenFirstLimit()
         {
-            //if (currentSticks >= (maxPerTurn + 1) *2 )
-            //{
-            //    AISticks += maxPerTurn;
-            //    return maxPerTurn;
-            //}
-            //if (currentSticks < maxPerTurn)
-            //{
-            //    return currentSticks;
-            //}
-            //else
-            //{
-            //    return maxPerTurn;
-            //}
-            
-            if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
-            {
-                int turn = 1;
-                while (currentSticks > turn && turn < maxPerTurn - 1)
-                {
-                    turn += 2;
-                }
-                if (currentSticks > turn)
-                {
-                    AISticks += turn;
-                    return turn;
+            return 1;
+        }
 
-                }
-                else
-                {
-                    AISticks += currentSticks;
-                    return currentSticks;
-
-                }
-               
-
-            }
-            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
-            {
-                int turn = 2;
-                while (currentSticks > turn && turn < maxPerTurn)
-                {
-                    turn += 2;
-                }
-                if (currentSticks > turn)
-                {
-                    AISticks += turn;
-                    return turn;
-
-                }
-                else
-                {
-                    AISticks += currentSticks;
-                    return currentSticks;
-
-                }
-            }
-            else if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
-            {
-                int turn = 1;
-                while (currentSticks > turn && turn < maxPerTurn)
-                {
-                    turn += 2;
-                }
-                if (currentSticks > turn)
-                {
-                    AISticks += turn;
-                    return turn;
-
-                }
-                else
-                {
-                    AISticks += currentSticks;
-                    return currentSticks;
-
-                }
-            }
-            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
-            {
-                int turn = 2;
-                while (currentSticks > turn && turn < maxPerTurn - 1)
-                {
-                    turn += 2;
-                }
-                if (currentSticks > turn)
-                {
-                    AISticks += turn;
-                    return turn;
-
-                }
-                else
-                {
-                    AISticks += currentSticks;
-                    return currentSticks;
-
-                }
-            }
-
-
-
-
-            else if(AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
+        //second limit is  maxPerTurn + 1
+        private int BetweenFirstAndSecondLimits(int currentSticks)
+        {
+            if (AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
             {
                 if (currentSticks - maxPerTurn - 3 <= maxPerTurn && currentSticks - maxPerTurn - 3 > 0)
                 {
                     AISticks += currentSticks - maxPerTurn - 3;
                     return currentSticks - maxPerTurn - 3;
-
                 }
                 else if (currentSticks > maxPerTurn)
                 {
                     AISticks += maxPerTurn;
                     return maxPerTurn;
-
                 }
                 else
                 {
                     AISticks += currentSticks;
                     return currentSticks;
-
                 }
             }
             else if (AISticks % 2 == 1 && currentSticks <= (maxPerTurn * 2) + 2)
@@ -148,38 +53,103 @@ namespace TestGame
                 {
                     AISticks += maxPerTurn;
                     return maxPerTurn;
+                }
+            }
+                return 0;
+        }
 
+        private int LessThenSecondLimit(int currentSticks)
+        {
+            if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
+            {
+                int turn = 1;
+                while (currentSticks > turn && turn < maxPerTurn - 1)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
                 }
                 else
                 {
                     AISticks += currentSticks;
                     return currentSticks;
-
                 }
-
+            }
+            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 0)
+            {
+                int turn = 2;
+                while (currentSticks > turn && turn < maxPerTurn)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+                }
+            }
+            else if (AISticks % 2 == 1 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
+            {
+                int turn = 1;
+                while (currentSticks > turn && turn < maxPerTurn)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+                }
+            }
+            else if (AISticks % 2 == 0 && currentSticks <= maxPerTurn + 1 && maxPerTurn % 2 == 1)
+            {
+                int turn = 2;
+                while (currentSticks > turn && turn < maxPerTurn - 1)
+                {
+                    turn += 2;
+                }
+                if (currentSticks > turn)
+                {
+                    AISticks += turn;
+                    return turn;
+                }
+                else
+                {
+                    AISticks += currentSticks;
+                    return currentSticks;
+                }
             }
 
+            return 0;
+        }
 
-            
-
+        public int AITurn(int currentSticks)
+        {
+            if (currentSticks > (maxPerTurn * 2) + 3)
+            {
+                return MoreThenFirstLimit();
+            }
+            else if (currentSticks <= (maxPerTurn * 2) + 3 && currentSticks > maxPerTurn + 1)
+            {
+                return BetweenFirstAndSecondLimits(currentSticks);
+            }
             else
             {
-                AISticks++;
-                return 1;
-
-            }
-            //if (AISticks % 2 == 0 && currentSticks <= (maxPerTurn * 2) + 3)
-            //{
-            //    return currentSticks - maxPerTurn - 3;
-            //}
-            //else if (AISticks % 2 == 1 && currentSticks <= (maxPerTurn * 2) + 2)
-            //{
-            //    return currentSticks - maxPerTurn -2;
-            //}
-            //else
-            //{
-            //    return 1;
-            //}
+                return LessThenSecondLimit(currentSticks);
+            }                
         }
     }
 }

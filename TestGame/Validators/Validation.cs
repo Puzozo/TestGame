@@ -13,11 +13,11 @@ namespace TestGame
             return int.TryParse(value, out int test);
         }
 
-        public bool BiggerThen(int border, int value)
+        public bool IsBiggerThen(int border, int value)
         {
             return value >= border;
         }
-        public bool LessThen(int border, int value)
+        public bool IsLessThen(int border, int value)
         {
             return value <= border;
         }
