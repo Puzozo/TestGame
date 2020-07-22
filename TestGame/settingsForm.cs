@@ -100,6 +100,14 @@ namespace TestGame
                 cbFirstTurnAI.Visible = true;
             }
         }
+
+        private void pbHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Game rules:\n" +
+                "1.In your turn you can get sticks in amount of max permited sticks or less, and more or equals 1 \n" +
+                "2.You win if after last stick you will have even number of sticks \n" +
+                "3.In defaut game first turn have player, game starts with 25 and max sticks per turn is 3");
+        }
     }
     
 }

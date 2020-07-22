@@ -19,7 +19,7 @@ namespace TestGame
         private Validation validator;
         private AI ai;
         private PlayerTypes firstPlayer, secondPlayer;
-        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn=3, PlayerTypes firstPlayer = PlayerTypes.Player, PlayerTypes secondPlayer = PlayerTypes.AI)
+        public gameForm(settingsForm mainForm, int amount = 25, int maxPerTurn = 3, PlayerTypes firstPlayer = PlayerTypes.Player, PlayerTypes secondPlayer = PlayerTypes.AI)
         {
             InitializeComponent();
             this.maxPerTurn = maxPerTurn;
@@ -42,40 +42,23 @@ namespace TestGame
             this.Dispose();
         }
 
-     
+
         private void btn_go_Click(object sender, EventArgs e)
         {
-           
-            if (!validator.IsDigit(tbChosenNumberOfSticksByPlayer.Text))
+            if (!InputValidation(tbChosenNumberOfSticksByPlayer.Text))
             {
-                MessageBox.Show("Plz enter only numbers");
-                return;
-            }
-            if (!validator.BiggerThen(0,Convert.ToInt32(tbChosenNumberOfSticksByPlayer.Text)))
-            {
-                MessageBox.Show("Plz enter only integers");
-                return;
-            }
-            int numberOfSticks = Convert.ToInt32(tbChosenNumberOfSticksByPlayer.Text);
-            
-            if (!validator.LessThen(maxPerTurn, numberOfSticks))
-            { 
-                MessageBox.Show("You can't choose this number, you can't choose nubers bigger then permited max nuber sticks by every turn ( " + maxPerTurn.ToString() + " )");
-                return;
-            }
-            if (!validator.LessThen(game.AllSticks, numberOfSticks))
-            {
-                MessageBox.Show("You can't choose this number, you can't choose nubers bigger then number of remaining sticks ( " + game.AllSticks.ToString() + " )");
                 return;
             }
 
+
+            int numberOfSticks = Convert.ToInt32(tbChosenNumberOfSticksByPlayer.Text);
             game.Turn(PlayerTypes.Player, numberOfSticks);
-           
+
             if (game.Winner() == PlayerTypes.Undefined)
             {
                 game.Turn(PlayerTypes.AI, ai.AITurn(game.AllSticks));
             }
-           
+
             if (game.Winner() == PlayerTypes.AI)
             {
                 lblWinner.Text = "Congratulations, you lose";
@@ -88,7 +71,9 @@ namespace TestGame
                 btnTurn.Enabled = false;
                 pbAILose.Visible = true;
             }
-            
+
+
+
             lblEntireAmount.Text = "x " + Convert.ToString(game.AllSticks);
             lblAIPoints.Text = Convert.ToString(game.AISticks);
             lblPlayerPoints.Text = Convert.ToString(game.PlayerSticks);
@@ -110,6 +95,34 @@ namespace TestGame
             form.Show();
             this.Hide();
             this.Dispose();
+        }
+
+        private bool InputValidation(string input)
+        {
+            if (!validator.IsDigit(input))
+            {
+                MessageBox.Show("Plz enter only numbers");
+                return false;
+            }
+            if (!validator.BiggerThen(0, Convert.ToInt32(input)))
+            {
+                MessageBox.Show("Plz enter only integers");
+                return false;
+            }
+            int numberOfSticks = Convert.ToInt32(input);
+
+            if (!validator.LessThen(maxPerTurn, numberOfSticks))
+            {
+                MessageBox.Show("You can't choose this number, you can't choose nubers bigger then permited max nuber sticks by every turn ( " + maxPerTurn.ToString() + " )");
+                return false;
+            }
+            if (!validator.LessThen(game.AllSticks, numberOfSticks))
+            {
+                MessageBox.Show("You can't choose this number, you can't choose nubers bigger then number of remaining sticks ( " + game.AllSticks.ToString() + " )");
+                return false;
+            }
+
+            return true;
         }
     }
 }

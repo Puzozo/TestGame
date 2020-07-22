@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
             this.gbSettings = new System.Windows.Forms.GroupBox();
+            this.cbFirstTurnAI = new System.Windows.Forms.CheckBox();
             this.tbMaxPerTurn = new System.Windows.Forms.TextBox();
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.lblMaxPerTurn = new System.Windows.Forms.Label();
@@ -39,10 +40,11 @@
             this.rbCustom = new System.Windows.Forms.RadioButton();
             this.pbAI = new System.Windows.Forms.PictureBox();
             this.bt_start = new System.Windows.Forms.Button();
-            this.cbFirstTurnAI = new System.Windows.Forms.CheckBox();
+            this.pbHelp = new System.Windows.Forms.PictureBox();
             this.gbSettings.SuspendLayout();
             this.gbGameMode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // gbSettings
@@ -62,6 +64,17 @@
             this.gbSettings.TabIndex = 0;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
+            // 
+            // cbFirstTurnAI
+            // 
+            this.cbFirstTurnAI.AutoSize = true;
+            this.cbFirstTurnAI.ForeColor = System.Drawing.Color.White;
+            this.cbFirstTurnAI.Location = new System.Drawing.Point(58, 281);
+            this.cbFirstTurnAI.Name = "cbFirstTurnAI";
+            this.cbFirstTurnAI.Size = new System.Drawing.Size(141, 29);
+            this.cbFirstTurnAI.TabIndex = 7;
+            this.cbFirstTurnAI.Text = "First turn AI";
+            this.cbFirstTurnAI.UseVisualStyleBackColor = true;
             // 
             // tbMaxPerTurn
             // 
@@ -157,16 +170,18 @@
             this.bt_start.UseVisualStyleBackColor = false;
             this.bt_start.Click += new System.EventHandler(this.bt_start_Click);
             // 
-            // cbFirstTurnAI
+            // pbHelp
             // 
-            this.cbFirstTurnAI.AutoSize = true;
-            this.cbFirstTurnAI.ForeColor = System.Drawing.Color.White;
-            this.cbFirstTurnAI.Location = new System.Drawing.Point(58, 281);
-            this.cbFirstTurnAI.Name = "cbFirstTurnAI";
-            this.cbFirstTurnAI.Size = new System.Drawing.Size(141, 29);
-            this.cbFirstTurnAI.TabIndex = 7;
-            this.cbFirstTurnAI.Text = "First turn AI";
-            this.cbFirstTurnAI.UseVisualStyleBackColor = true;
+            this.pbHelp.BackColor = System.Drawing.Color.Transparent;
+            this.pbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHelp.BackgroundImage")));
+            this.pbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbHelp.Location = new System.Drawing.Point(1, 0);
+            this.pbHelp.Name = "pbHelp";
+            this.pbHelp.Size = new System.Drawing.Size(48, 43);
+            this.pbHelp.TabIndex = 3;
+            this.pbHelp.TabStop = false;
+            this.pbHelp.Click += new System.EventHandler(this.pbHelp_Click);
             // 
             // settingsForm
             // 
@@ -175,6 +190,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(743, 483);
+            this.Controls.Add(this.pbHelp);
             this.Controls.Add(this.bt_start);
             this.Controls.Add(this.pbAI);
             this.Controls.Add(this.gbSettings);
@@ -188,6 +204,7 @@
             this.gbGameMode.ResumeLayout(false);
             this.gbGameMode.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,5 +222,6 @@
         private System.Windows.Forms.PictureBox pbAI;
         private System.Windows.Forms.Button bt_start;
         private System.Windows.Forms.CheckBox cbFirstTurnAI;
+        private System.Windows.Forms.PictureBox pbHelp;
     }
 }
