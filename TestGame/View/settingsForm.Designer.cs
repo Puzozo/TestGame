@@ -197,7 +197,7 @@
             this.DoubleBuffered = true;
             this.Name = "settingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "settingsForm";
+            this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.settingsForm_FormClosing);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();

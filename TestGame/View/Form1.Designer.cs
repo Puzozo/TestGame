@@ -42,9 +42,11 @@
             this.pbAIWin = new System.Windows.Forms.PictureBox();
             this.pbAILose = new System.Windows.Forms.PictureBox();
             this.btChangeSettings = new System.Windows.Forms.Button();
+            this.pbHelp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbStick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAIWin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAILose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // btnTurn
@@ -187,12 +189,26 @@
             this.btChangeSettings.UseVisualStyleBackColor = false;
             this.btChangeSettings.Click += new System.EventHandler(this.btChangeSettings_Click);
             // 
+            // pbHelp
+            // 
+            this.pbHelp.BackColor = System.Drawing.Color.Transparent;
+            this.pbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHelp.BackgroundImage")));
+            this.pbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbHelp.Location = new System.Drawing.Point(1, 367);
+            this.pbHelp.Name = "pbHelp";
+            this.pbHelp.Size = new System.Drawing.Size(48, 43);
+            this.pbHelp.TabIndex = 13;
+            this.pbHelp.TabStop = false;
+            this.pbHelp.Click += new System.EventHandler(this.pbHelp_Click);
+            // 
             // gameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(492, 412);
+            this.Controls.Add(this.pbHelp);
             this.Controls.Add(this.btChangeSettings);
             this.Controls.Add(this.pbAILose);
             this.Controls.Add(this.pbAIWin);
@@ -209,12 +225,13 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "gameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kitaiskiy Game";
+            this.Text = "Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gameForm_FormClosing);
             this.Load += new System.EventHandler(this.gameForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbStick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAIWin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAILose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,6 +252,7 @@
         private System.Windows.Forms.PictureBox pbAIWin;
         private System.Windows.Forms.PictureBox pbAILose;
         private System.Windows.Forms.Button btChangeSettings;
+        private System.Windows.Forms.PictureBox pbHelp;
     }
 }
 
